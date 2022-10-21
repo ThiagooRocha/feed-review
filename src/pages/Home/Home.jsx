@@ -7,9 +7,7 @@ export const Home = () => {
     <section className='home'>
       <Navbar />
       <div className='wrappler'>
-        <div className='tt'>
-          text
-        </div>
+        
       </div>
       <Footer/>
     </section>

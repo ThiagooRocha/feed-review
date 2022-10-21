@@ -1,39 +1,53 @@
 import "./Login.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
 
 import { Logo } from "../../components/Logo";
-import { Envelope, Lock, ArrowBendDownLeft } from "phosphor-react";
+import { Error } from "../../components/Error";
 
-import { useAuthentication } from "../../hooks/useAuthentication"
+import {
+  Envelope,
+  Lock,
+  Eye,
+  EyeSlash,
+  ArrowBendDownLeft,
+} from "phosphor-react";
+
+import { useAuthentication } from "../../hooks/useAuthentication";
 
 export const Login = () => {
-  const { login } = useAuthentication()
+  const { login, loading, error: authError } = useAuthentication();
 
+  const [error, setError] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [typePassword, setTypePassword] = useState("password");
 
   async function handleLogin(event) {
     event.preventDefault();
 
     if (email != "" && password != "") {
-
       const user = {
-        email, 
-        password
-      }
+        email,
+        password,
+      };
 
-      const response = await login(user)
+      const response = await login(user);
 
       setEmail("");
       setPassword("");
-      
     } else {
-      alert("Erro!");
+      setError("Preencha todos os campos!");
     }
   }
 
+  useEffect(() => {
+    if (authError) {
+      setError(authError);
+    }
+  }, [authError]);
 
   return (
     <div className="login">
@@ -49,7 +63,6 @@ export const Login = () => {
         <label>
           <span className="text-md">Endereço de e-mail</span>
           <div className="box-input">
-            <Envelope size="24" color="#94a3b8" />
             <input
               type="email"
               name=""
@@ -58,24 +71,44 @@ export const Login = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+            <Envelope size="24" className="iconForm" />
           </div>
         </label>
         <label>
           <span className="text-md">Sua senha</span>
           <div className="box-input">
-            <Lock size="24" color="#94a3b8" />
             <input
-              type="password"
+              type={typePassword}
               name=""
               id="password"
               placeholder="Sua senha"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <Lock size="24" className="iconForm" />
+            {typePassword === "password" ? (
+              <Eye
+                className="iconPassword"
+                size="20"
+                onClick={() => setTypePassword("text")}
+              />
+            ) : (
+              <EyeSlash
+                className="iconPassword"
+                size="20"
+                onClick={() => setTypePassword("password")}
+              />
+            )}
           </div>
         </label>
-        <button className="btn">ENTRAR</button>
+        {!loading && <button className="btn">ENTRAR</button>}
+        {loading && (
+          <button className="btn disabled" disabled>
+            ENTRAR
+          </button>
+        )}
       </form>
+      {error && <Error message={error} />}
       <Link to="/register" className="create-account">
         Não possuí conta? Crie uma agora!
       </Link>

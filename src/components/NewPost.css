@@ -1,0 +1,53 @@
+body.openModal {
+  overflow: hidden;
+}
+.newPost {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  background: #22222277;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  display: none;
+}
+.newPost.openModal {
+  display: flex;
+}
+
+.newPost .newPost-container {
+  position: relative;
+  background-color: var(--slate-800);
+  border-radius: 0.4rem;
+  padding: 5rem 3rem;
+  transform-origin: bottom;
+  animation-duration: .4s;
+  animation-iteration-count: ease-in;
+  animation-name: form-movement;
+  animation-timing-function: ease;
+}
+
+
+.newPost .newPost-container .btn-close {
+  position: absolute;
+  top: -5%;
+  right: -5%;
+}
+
+@keyframes form-movement {
+  0% {
+    transform: translateY(50%);
+    opacity: 0%;
+  }
+  80% {
+    opacity: 100%;
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}

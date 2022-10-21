@@ -1,0 +1,45 @@
+.error-form {
+  cursor: not-allowed;
+  visibility: visible;
+  
+  position: absolute;
+  top: 5%;
+  right: 40px;
+
+  margin-block: 1rem;
+  padding: 1.4rem 2rem;
+
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight:500;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  border-radius: .4rem;
+  background-color: var(--slate-800);
+  color: var(--slate-300);
+
+  animation-duration: .5s;
+  animation-iteration-count: ease-in;
+  animation-name: error-moviment;
+  animation-timing-function: ease;
+}
+.error-form.hidden {
+    visibility: hidden;
+}
+
+@keyframes error-moviment {
+  0% {
+    transform: translateX(10%);
+    opacity: 0%;
+  }
+  80% {
+    opacity: 100%;
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
