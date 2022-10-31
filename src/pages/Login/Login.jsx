@@ -1,5 +1,5 @@
 import "./Login.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -17,6 +17,8 @@ import {
 import { useAuthentication } from "../../hooks/useAuthentication";
 
 export const Login = () => {
+  const inputRef = useRef();
+
   const { login, loading, error: authError } = useAuthentication();
 
   const [error, setError] = useState(null);
@@ -38,7 +40,9 @@ export const Login = () => {
 
       setEmail("");
       setPassword("");
+
     } else {
+      inputRef.current.focus()
       setError("Preencha todos os campos!");
     }
   }
@@ -64,6 +68,7 @@ export const Login = () => {
           <span className="text-md">Endereço de e-mail</span>
           <div className="box-input">
             <input
+              ref={inputRef}
               type="email"
               name=""
               id="email"

@@ -158,9 +158,6 @@ input {
   font-weight: 400;
   padding-left: 0.5rem;
 }
-input:focus ~ svg {
-  color: var(--slate-800);
-}
 input::placeholder {
   font-family: "Inter", sans-serif;
   font-size: 1.4rem;

@@ -11,11 +11,13 @@ import {
 import { Link } from "react-router-dom";
 import { Logo } from "../../components/Logo";
 import { Error } from "../../components/Error";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import { useAuthentication } from "../../hooks/useAuthentication";
 
 export const Register = () => {
+  const inputRef = useRef();
+
   const { createUser, loading, error: authError } = useAuthentication();
 
   const [error, setError] = useState(null);
@@ -45,7 +47,9 @@ export const Register = () => {
       if (!error) {
         window.location.reload();
       }
+
     } else {
+      inputRef.current.focus()
       setError("Preencha todos os campos!");
     }
   }
@@ -71,6 +75,7 @@ export const Register = () => {
           <span className="text-md">Nome de usuário</span>
           <div className="box-input">
             <input
+              ref={inputRef}
               type="text"
               id="userName"
               placeholder="Nome de usuário"

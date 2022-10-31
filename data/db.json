@@ -1,0 +1,22 @@
+{
+    "posts": [
+        {
+            "id": "defaultHash",
+            "uid": "1",
+            "title": "Default Title",
+            "img": "http://pm1.narvii.com/6376/0f1a472114b9b38dbd05b8045ed9fb70ec800867_00.jpg",
+            "desc": "Default Description",
+            "tags": ["tag1","tag2","tag3"],
+            "createdBy": "Default User"
+        },
+        {
+            "id": "defaultHash2",
+            "uid": "2",
+            "title": "Default Title",
+            "img": "http://pm1.narvii.com/6376/0f1a472114b9b38dbd05b8045ed9fb70ec800867_00.jpg",
+            "desc": "Default Description",
+            "tags": ["tag1","tag2","tag3"],
+            "createdBy": "Default User"
+        }
+    ]
+}

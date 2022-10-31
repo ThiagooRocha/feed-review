@@ -1,60 +1,108 @@
 import "./NewPost.css";
 
-import { TextT, Image, X } from "phosphor-react";
+import { TextT, Image, X, Check } from "phosphor-react";
+import { Error } from "../components/Error";
 
 //Context
 import { useState, useContext } from "react";
+import { useAuthValue } from "../context/AuthContext";
 import { ModalNewPostContext } from "../context/ModalNewPostContext";
 
 export const NewPost = () => {
   const { modalPost, setModalPost } = useContext(ModalNewPostContext);
 
+  const [error, setError] = useState(null);
+
   const [title, setTitle] = useState("");
   const [img, setImg] = useState("");
+  const [desc, setDesc] = useState("");
+  const [textTag, setTextTag] = useState("");
+  const [tags, setTags] = useState([]);
 
-  if(modalPost) {
-    document.body.classList.add("openModal")
-    
+  const { user } = useAuthValue();
+
+  if (modalPost) {
+    document.body.classList.add("openModal");
   }
 
   function closeModal() {
-    document.body.classList.remove("openModal")
-    setTitle("")
-    setImg("")
-    setModalPost(false)
+    document.body.classList.remove("openModal");
+    setTitle("");
+    setImg("");
+    setDesc("");
+    setTags([]);
+    setModalPost(false);
   }
+
+  const handleNewPost = (e) => {
+    e.preventDefault();
+    setError("");
+
+    if (!title == "" && !img == "" && tags.length !== 0 && !desc == "") {
+    
+      try {
+        new URL(img);
+      } catch (error) {
+        return setError("A imagem precisa ser uma URL.");
+      }
+
+      const dateFormat = new Date().toLocaleTimeString("pt-br", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
+
+      console.log({
+        title,
+        img,
+        desc,
+        tags,
+        id: dateFormat + user.uid,
+        uid: user.uid,
+        createdBy: user.displayName,
+      });
+
+    } else {
+      return setError("Preencha todos os campos!");
+    }
+
+    setTitle("");
+    setImg("");
+    setDesc("");
+    setTags([]);
+    setTextTag("");
+  };
 
   return (
     <>
       {modalPost && (
         <div className="newPost openModal">
-
           <div className="newPost-container">
             <button className="btn-close" onClick={closeModal}>
               <X size={24} color="#f1f5f9" />
             </button>
 
-            <form className="form">
+            <form className="form" onSubmit={handleNewPost}>
               <label>
                 <span className="text-md">Titulo</span>
                 <div className="box-input">
                   <input
+                    required
                     type="title"
-                    name=""
                     id="title"
                     placeholder="Titulo da sua postagem"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                   />
-                  <TextT size="24" className="iconForm"/>
+                  <TextT size="24" className="iconForm" />
                 </div>
               </label>
               <label>
                 <span className="text-md">URL da sua imagem</span>
                 <div className="box-input">
                   <input
+                    required
                     type="img"
-                    name=""
                     id="img"
                     placeholder="https://image..."
                     value={img}
@@ -63,16 +111,64 @@ export const NewPost = () => {
                   <Image size="24" className="iconForm" />
                 </div>
               </label>
-              <label>
-                <span className="text-md">Titulo</span>
-                <div className="">
-                  <textarea name="" id="description"></textarea>
-                </div>
-              </label>
-              <button className="btn">POSTAR</button>
-            </form>
-          </div>
+              <div className="infos">
+                <label>
+                  <span className="text-md">Descrição</span>
+                  <div className="">
+                    <textarea
+                      required
+                      id="description"
+                      placeholder="Descrição da sua postagem"
+                      value={desc}
+                      onChange={(e) => setDesc(e.target.value)}
+                    ></textarea>
+                  </div>
+                </label>
 
+                <label className="tags-input">
+                  <span className="text-md">Tags</span>
+                  <div className="box-input">
+                    <input
+                      type="text"
+                      name="tags"
+                      placeholder="Insira as tags"
+                      onChange={(e) => setTextTag(e.target.value)}
+                      value={textTag}
+                    />
+
+                    <div
+                      className="btn-tags"
+                      onClick={() => {
+                        if (textTag !== "") {
+                          const tag = textTag.toLocaleLowerCase();
+                          setTags((prev) => [...prev, tag]);
+                          setTextTag("");
+                        }
+                      }}
+                    >
+                      <Check size={20} />
+                    </div>
+                  </div>
+                </label>
+              </div>
+
+              <div className="tags">
+                {tags.map((tag) => (
+                  <p key={tag}>{tag}</p>
+                ))}
+              </div>
+              <button className="btn">POSTAR</button>
+              {/*
+              {!loading && <button className="btn">POSTAR</button>}
+              {loading && (
+                <button className="btn disabled" disabled>
+                  POSTANDO
+                </button>
+              )}
+              */}
+            </form>
+            {error && <Error message={error} />}
+          </div>
         </div>
       )}
     </>
