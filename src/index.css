@@ -33,7 +33,6 @@
 }
 
 body {
-  overflow-y: overlay;
   font-size: 1.6rem;
   font-family: "Inter", sans-serif;
   background-color: var(--slate-900);
@@ -49,6 +48,8 @@ img {
 }
 .wrappler {
   min-height: 80vh;
+  padding-inline: 2rem;
+  margin-block: 10rem;
 }
 
 /* Logo */

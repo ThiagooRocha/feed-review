@@ -7,9 +7,13 @@ import { Error } from "../components/Error";
 import { useState, useContext } from "react";
 import { useAuthValue } from "../context/AuthContext";
 import { ModalNewPostContext } from "../context/ModalNewPostContext";
+import { PostsContext } from "../context/PostsContext";
+
+const urlApi = "http://localhost:3000/posts";
 
 export const NewPost = () => {
   const { modalPost, setModalPost } = useContext(ModalNewPostContext);
+  const { setPosts, setData } = useContext(PostsContext);
 
   const [error, setError] = useState(null);
 
@@ -34,12 +38,11 @@ export const NewPost = () => {
     setModalPost(false);
   }
 
-  const handleNewPost = (e) => {
+  const handleNewPost = async (e) => {
     e.preventDefault();
     setError("");
 
     if (!title == "" && !img == "" && tags.length !== 0 && !desc == "") {
-    
       try {
         new URL(img);
       } catch (error) {
@@ -52,7 +55,7 @@ export const NewPost = () => {
         second: "2-digit",
       });
 
-      console.log({
+      const post = {
         title,
         img,
         desc,
@@ -60,17 +63,27 @@ export const NewPost = () => {
         id: dateFormat + user.uid,
         uid: user.uid,
         createdBy: user.displayName,
+      };
+
+      const res = await fetch(urlApi, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(post),
       });
+
+      const newPost = await res.json();
+
+      setPosts((prevState) => [...prevState, newPost]);
+      setData(post)
+      setModalPost()
 
     } else {
       return setError("Preencha todos os campos!");
     }
 
-    setTitle("");
-    setImg("");
-    setDesc("");
-    setTags([]);
-    setTextTag("");
+    closeModal()
   };
 
   return (

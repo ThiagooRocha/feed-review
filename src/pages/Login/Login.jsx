@@ -54,7 +54,7 @@ export const Login = () => {
   }, [authError]);
 
   return (
-    <div className="login">
+    <section className="login">
       <Link to="/" className="btn-backToHome">
         <ArrowBendDownLeft size={32} />
       </Link>
@@ -117,6 +117,6 @@ export const Login = () => {
       <Link to="/register" className="create-account">
         Não possuí conta? Crie uma agora!
       </Link>
-    </div>
+    </section>
   );
 };

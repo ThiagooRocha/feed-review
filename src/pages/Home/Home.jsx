@@ -1,27 +1,33 @@
-import React from 'react'
+import './Home.css'
+import { useEffect, useContext } from 'react'
+
+//Components
 import { Navbar } from "../../components/Navbar"
 import { Footer } from '../../components/Footer'
+import { Post } from "../../components/Post"
 
-import { useState, useEffect } from 'react'
+//Context
+import { PostsContext } from "../../context/PostsContext"
 
 const urlApi = "http://localhost:3000/posts"
 
 export const Home = () => {
 
-  const [posts, setPosts] = useState([])
+  const {posts, setPosts, data} = useContext(PostsContext)
 
   useEffect(() => {
     async function fetchPosts () {
       const res = await fetch(urlApi)
       const data = await res.json()
 
-      console.log(data)
-      setPosts(data)
+      const dataPosts = data.slice(0).reverse();
+
+      setPosts(dataPosts)
     }
 
     fetchPosts()
 
-  }, [])
+  }, [data])
   
 
   return (
@@ -30,14 +36,7 @@ export const Home = () => {
       <div className='wrappler'>
 
         {posts.map(post => (
-          <li key={post.id}>
-            <p>{post.title}</p>
-            <p>{post.desc}</p>
-            <p>{post.uid}</p>
-            <img src={post.img} alt={post.title} />
-           <p>{post.tags}</p>
-            <p>{post.createdBy}</p>
-          </li>
+          <Post key={post.id} createdBy={post.createdBy} title={post.title} desc={post.desc} img={post.img} tags={post.tags}/>
         ))}
       </div>
       <Footer/>

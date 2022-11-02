@@ -44,7 +44,7 @@ export const Register = () => {
       setEmail("");
       setPassword("");
 
-      if (!error) {
+      if (error !== null) {
         window.location.reload();
       }
 
@@ -61,7 +61,7 @@ export const Register = () => {
   }, [authError]);
 
   return (
-    <div className="register">
+    <section className="register">
       <Link to="/" className="btn-backToHome">
         <ArrowBendDownLeft size={32} />
       </Link>
@@ -131,6 +131,6 @@ export const Register = () => {
       <Link to="/login" className="login-account">
         Já possuí conta? Faça o login!
       </Link>
-    </div>
+    </section>
   );
 };

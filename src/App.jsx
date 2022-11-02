@@ -5,6 +5,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { Home } from "../src/pages/Home/Home";
 import { About } from "../src/pages/About/About";
 import { Dashboard } from "./pages/Dashboard/Dashboard";
+import { PostPage } from "./pages/PostPage/PostPage";
 import { Register } from "./pages/Register/Register";
 import { Login } from "./pages/Login/Login";
 
@@ -14,6 +15,7 @@ import { useState, useEffect } from "react";
 import { useAuthentication } from "./hooks/useAuthentication";
 import { NewPost } from "./components/NewPost";
 
+import { PostsProvider } from "./context/PostsContext";
 import { ModalNewPostProvider } from "./context/ModalNewPostContext";
 
 export function App() {
@@ -21,8 +23,6 @@ export function App() {
   const { auth } = useAuthentication();
 
   const loadingUser = user === undefined;
-
-  
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -43,27 +43,30 @@ export function App() {
   return (
     <div className="App">
       <AuthProvider value={{ user }}>
-        <ModalNewPostProvider>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route
-                path="/dashboard"
-                element={user ? <Dashboard /> : <Navigate to="/" />}
-              />
-              <Route
-                path="/login"
-                element={!user ? <Login /> : <Navigate to="/" />}
-              />
-              <Route
-                path="/register"
-                element={!user ? <Register /> : <Navigate to="/" />}
-              />
-            </Routes>
-          </BrowserRouter>
-          {user? <NewPost /> : null}
-        </ModalNewPostProvider>
+        <PostsProvider>
+          <ModalNewPostProvider>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/:id"element={<PostPage />} />
+                <Route path="/about" element={<About />} />
+                <Route
+                  path="/dashboard"
+                  element={user ? <Dashboard /> : <Navigate to="/" />}
+                />
+                <Route
+                  path="/login"
+                  element={!user ? <Login /> : <Navigate to="/" />}
+                />
+                <Route
+                  path="/register"
+                  element={!user ? <Register /> : <Navigate to="/" />}
+                />
+              </Routes>
+            </BrowserRouter>
+            {user ? <NewPost /> : null}
+          </ModalNewPostProvider>
+        </PostsProvider>
       </AuthProvider>
     </div>
   );
