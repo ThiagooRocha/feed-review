@@ -15,6 +15,7 @@ export const NewPost = () => {
   const { modalPost, setModalPost } = useContext(ModalNewPostContext);
   const { setPosts, setData } = useContext(PostsContext);
 
+  const [loading, setLoading] = useState(null);
   const [error, setError] = useState(null);
 
   const [title, setTitle] = useState("");
@@ -41,6 +42,7 @@ export const NewPost = () => {
   const handleNewPost = async (e) => {
     e.preventDefault();
     setError("");
+    setLoading(true);
 
     if (!title == "" && !img == "" && tags.length !== 0 && !desc == "") {
       try {
@@ -76,14 +78,15 @@ export const NewPost = () => {
       const newPost = await res.json();
 
       setPosts((prevState) => [...prevState, newPost]);
-      setData(post)
-      setModalPost()
-
+      setData(post);
+      setModalPost();
+      setLoading(false);
     } else {
+      setLoading(false);
       return setError("Preencha todos os campos!");
     }
 
-    closeModal()
+    closeModal();
   };
 
   return (
@@ -170,15 +173,12 @@ export const NewPost = () => {
                   <p key={tag}>{tag}</p>
                 ))}
               </div>
-              <button className="btn">POSTAR</button>
-              {/*
               {!loading && <button className="btn">POSTAR</button>}
               {loading && (
                 <button className="btn disabled" disabled>
                   POSTANDO
                 </button>
               )}
-              */}
             </form>
             {error && <Error message={error} />}
           </div>

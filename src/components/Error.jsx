@@ -1,5 +1,4 @@
 import "./Error.css";
-import { useEffect, useState } from "react";
 
 import { XCircle } from "phosphor-react";
 
