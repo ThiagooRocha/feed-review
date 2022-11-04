@@ -76,7 +76,15 @@ export const Dashboard = () => {
       <div className="wrappler">
         <h2>Dashboard | {user.displayName}</h2>
         {loading && <Loading />}
-        {error && <p><Error message={error}/></p>}
+        {error && (
+          <>
+            <Error message={error} />
+            <div className="noPost">
+              <SmileyXEyes size={250} />
+              <p>{error}</p>
+            </div>
+          </>
+        )}
         {!error && (
           <>
             {!loading && (

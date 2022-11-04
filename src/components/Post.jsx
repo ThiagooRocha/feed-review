@@ -3,7 +3,7 @@ import "./Post.css";
 export const Post = ({ title, desc, img, tags, createdBy }) => {
   return (
     <div className="post">
-      <img src={img} alt={title} />
+      <img src={img} alt={title} loading="lazy"/>
       <div className="post-infos">
         <h2 className="heading-sm"> {title}</h2>
         <p>{desc}</p>

@@ -48,6 +48,7 @@ export const NewPost = () => {
       try {
         new URL(img);
       } catch (error) {
+        setLoading(false);
         return setError("A imagem precisa ser uma URL.");
       }
 

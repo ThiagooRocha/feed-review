@@ -1,20 +1,25 @@
 import "./Navbar.css";
 
-import { useContext } from "react"
+import { useContext } from "react";
 
 import { NavLink } from "react-router-dom";
 
-import { Plus, UserPlus } from "phosphor-react";
+import { List, X, Plus, UserPlus } from "phosphor-react";
 import { Logo } from "./Logo";
 
-import { ModalNewPostProvider, ModalNewPostContext } from "../context/ModalNewPostContext";
+import { ModalNewPostContext } from "../context/ModalNewPostContext";
 
 import { useAuthentication } from "../hooks/useAuthentication";
 import { useAuthValue } from "../context/AuthContext";
+import { useState } from "react";
 
 export const Navbar = () => {
+  const [openMenu, setOpenMenu] = useState(false);
+
   const { user } = useAuthValue();
   const { logout } = useAuthentication();
+
+  const { setModalPost } = useContext(ModalNewPostContext);
 
   function convertUserName() {
     if (user) {
@@ -23,67 +28,82 @@ export const Navbar = () => {
         let getLetter = splitName.findIndex((name) => name === " ");
 
         if (getLetter === -1) {
-          getLetter = 0;
+          const convertName = `${splitName[0]}`.toUpperCase();
+          return convertName;
+        } else {
+          const convertName = `${splitName[0]}${
+            splitName[getLetter + 1]
+          }`.toUpperCase();
+
+          return convertName;
         }
-
-        const convertName = `${splitName[0]}${
-          splitName[getLetter + 1]
-        }`.toUpperCase();
-
-        return convertName;
       } else {
         return <UserPlus size={20} color="#0f172a" />;
       }
     }
   }
 
-  const {setModalPost} = useContext(ModalNewPostContext)
+  if (openMenu) {
+    document.body.classList.add("openModal");
+  } else {
+    document.body.classList.remove("openModal");
+  }
 
   return (
-      <nav className="navbar">
-        <Logo />
-        <ul>
-          <li>
-            <NavLink to="/" end>
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/about">About</NavLink>
-          </li>
+    <nav className={openMenu ? "navbar openMenu" : "navbar"}>
+      <Logo />
+      <div className="menu-btn">
+        {openMenu ? (
+          <X size={28} onClick={() => setOpenMenu(false)} />
+        ) : (
+          <List size={28} onClick={() => setOpenMenu(true)} />
+        )}
+      </div>
+      <ul>
+        <li>
+          <NavLink to="/" end>
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/about">About</NavLink>
+        </li>
 
-          {user ? (
-            <>
-              <li>
-                <NavLink to="/dashboard">Dashboard</NavLink>
-              </li>
-              <li className="user-img">
-                <span>{convertUserName()}</span>
-              </li>
-              <li>
-                <button className="btn-createNewPost" onClick={() =>  setModalPost(true)}>
-                  <Plus size="28" />
-                </button>
-              </li>
-              <li>
-                <a onClick={logout}>Sair</a>
-              </li>
-            </>
-          ) : null}
+        {user ? (
+          <>
+            <li onClick={() => setOpenMenu(false)}>
+              <NavLink to="/dashboard">Dashboard</NavLink>
+            </li>
+            <li className="user-img">
+              <span>{convertUserName()}</span>
+            </li>
+            <li onClick={() => setOpenMenu(false)}>
+              <button
+                className="btn-createNewPost"
+                onClick={() => setModalPost(true)}
+              >
+                <Plus size="28" />
+              </button>
+            </li>
+            <li onClick={() => setOpenMenu(false)}>
+              <a onClick={logout}>Sair</a>
+            </li>
+          </>
+        ) : null}
 
-          {!user ? (
-            <>
-              <li>
-                <NavLink to="/login">Entrar</NavLink>
-              </li>
-              <li>
-                <NavLink to="/register" className="btn-outline">
-                  Criar conta <UserPlus size={20} weight="bold" />
-                </NavLink>
-              </li>
-            </>
-          ) : null}
-        </ul>
-      </nav>
+        {!user ? (
+          <>
+            <li onClick={() => setOpenMenu(false)}>
+              <NavLink to="/login">Entrar</NavLink>
+            </li>
+            <li onClick={() => setOpenMenu(false)}>
+              <NavLink to="/register" className="btn-outline">
+                Criar conta <UserPlus size={20} weight="bold" />
+              </NavLink>
+            </li>
+          </>
+        ) : null}
+      </ul>
+    </nav>
   );
 };

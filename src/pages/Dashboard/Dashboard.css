@@ -6,6 +6,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: var(--slate-700);
+  font-weight: 600;
 }
 .noPost button {
   font-size: 1.6rem;
@@ -111,5 +113,12 @@
   }
   100% {
     transform: translateY(0%);
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .dashboard h2 {
+    margin-left: initial;
+    font-size: 2rem;
   }
 }

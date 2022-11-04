@@ -3,7 +3,7 @@
   visibility: visible;
   
   position: fixed;
-  top: 5%;
+  top: 10%;
   right: 40px;
 
   margin-block: 1rem;
@@ -26,6 +26,10 @@
   animation-iteration-count: ease-in;
   animation-name: error-moviment;
   animation-timing-function: ease;
+
+  box-shadow: rgba(0, 0, 0, 0.13) 0px 3px 8px;
+
+  z-index: 30;
 }
 .error-form.hidden {
     visibility: hidden;
@@ -41,5 +45,11 @@
   }
   100% {
     transform: translateX(0%);
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .error-form {
+    right: 5%;
   }
 }

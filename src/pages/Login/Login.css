@@ -11,6 +11,8 @@
     color: var(--slate-400);
     margin-top: 3rem;
     text-decoration: underline;
+    text-align: center;
+    padding-inline: 2rem;
 }
 .create-account:hover {
     color: var(--slate-100);
