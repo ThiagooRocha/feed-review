@@ -7,6 +7,8 @@ import { NavLink } from "react-router-dom";
 import { List, X, Plus, UserPlus } from "phosphor-react";
 import { Logo } from "./Logo";
 
+import { Search } from "./Search";
+
 import { ModalNewPostContext } from "../context/ModalNewPostContext";
 
 import { useAuthentication } from "../hooks/useAuthentication";
@@ -52,6 +54,9 @@ export const Navbar = () => {
   return (
     <nav className={openMenu ? "navbar openMenu" : "navbar"}>
       <Logo />
+
+      <Search />
+
       <div className="menu-btn">
         {openMenu ? (
           <X size={28} onClick={() => setOpenMenu(false)} />
@@ -59,6 +64,7 @@ export const Navbar = () => {
           <List size={28} onClick={() => setOpenMenu(true)} />
         )}
       </div>
+
       <ul>
         <li>
           <NavLink to="/" end>

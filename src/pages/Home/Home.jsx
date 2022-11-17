@@ -1,5 +1,7 @@
 import "./Home.css";
 import { useEffect, useContext } from "react";
+import { useSearchParams, useNavigate } from "react-router-dom";
+
 
 //Components
 import { Navbar } from "../../components/Navbar";
@@ -12,13 +14,41 @@ import { Error } from "../../components/Error";
 import { PostsContext } from "../../context/PostsContext";
 import { useState } from "react";
 
-const urlApi = "http://localhost:3000/posts";
 
 export const Home = () => {
   const { posts, setPosts, data } = useContext(PostsContext);
-
+  
+  const navigate = useNavigate()
+  const [searchParams] = useSearchParams();
   const [loading, setLoading] = useState(null);
   const [error, setError] = useState(null);
+  
+  
+  const urlApi = "http://localhost:3000/posts";
+  const urlSearch = `http://localhost:3000/posts?${searchParams}`;
+
+  useEffect(() => {
+    async function searchPosts() {
+      try {
+        const res = await fetch(urlSearch);
+        const data = await res.json();
+
+        const dataFormat = data.slice(0).reverse()
+
+        if(!dataFormat.length) {
+          navigate("/")
+        } else {
+          setPosts(dataFormat);
+        }
+
+      } catch (error) {
+        console.log(error.message);
+        setError("erro ao carregar os dados!");
+        setLoading(false);
+      }
+    }
+    searchPosts();
+  }, [urlSearch]);
 
   useEffect(() => {
     async function fetchPosts() {

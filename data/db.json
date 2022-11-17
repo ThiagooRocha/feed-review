@@ -1,21 +1,6 @@
 {
   "posts": [
     {
-      "title": "Zaraki Kenpachi",
-      "img": "https://i.pinimg.com/originals/32/da/26/32da26254b80fa8e22d2cdd72905bbb8.jpg",
-      "desc": "Kenpachi Zaraki é um personagem fictício de apoio no anime e mangá Bleach criado por Tite Kubo. Ele é o capitão da 11ª Divisão dentro do Gotei 13. Seu tenente é Ikkaku Madarame.",
-      "tags": [
-        "bleach",
-        "zaraki kenpachi",
-        "kenpachi",
-        "zaraki",
-        "blood war"
-      ],
-      "id": "21:25:070us8qKGHqqMUtFVfwMQ11i66oSP2",
-      "uid": "0us8qKGHqqMUtFVfwMQ11i66oSP2",
-      "createdBy": "Thiago Rocha"
-    },
-    {
       "title": "Mayuri Kurotsuchi",
       "img": "http://pm1.narvii.com/7342/55fee5de960d6802e886a791036931037755285cr1-1920-1080v2_uhq.jpg",
       "desc": "Mayuri Kurotsuchi é um personagem fictício do anime e mangá Bleach criado por Tite Kubo. Ele é o atual capitão da 12ª Divisão do Gotei 13 e supervisor do Instituto de Pesquisa e Desenvolvimento dos Soul Reapers.",
@@ -26,17 +11,6 @@
       "id": "21:30:00beaAJa2wYaNXGVWiNM3Zmp7DdsJ2",
       "uid": "beaAJa2wYaNXGVWiNM3Zmp7DdsJ2",
       "createdBy": "manchaa"
-    },
-    {
-      "title": "Teste",
-      "img": "https://i.pinimg.com/736x/ca/c4/9a/cac49a1f3cd8153ddeb756bad60a3c62.jpg",
-      "desc": "teset",
-      "tags": [
-        "teste"
-      ],
-      "id": "23:18:070us8qKGHqqMUtFVfwMQ11i66oSP2",
-      "uid": "0us8qKGHqqMUtFVfwMQ11i66oSP2",
-      "createdBy": "Thiago Rocha"
     },
     {
       "title": "sa",
@@ -62,6 +36,42 @@
       "id": "16:39:13oyV8KIFp5eNdGaR8Nhl5WXgRcMt1",
       "uid": "oyV8KIFp5eNdGaR8Nhl5WXgRcMt1",
       "createdBy": "Hisoka Morrow"
+    },
+    {
+      "title": "God of War - Ragnarok",
+      "img": "https://images6.alphacoders.com/120/1209131.jpg",
+      "desc": "God of War Ragnarök é um jogo eletrônico de ação-aventura desenvolvido pela Santa Monica Studio e publicado pela Sony Interactive Entertainment. Foi lançado em 9 de novembro de 2022 para PlayStation 4 e PlayStation 5. É o nono título da série God of War, o nono em ordem cronológica, e a sequência de God of War.",
+      "tags": [
+        "god of war"
+      ],
+      "id": "03:44:460us8qKGHqqMUtFVfwMQ11i66oSP2",
+      "uid": "0us8qKGHqqMUtFVfwMQ11i66oSP2",
+      "createdBy": "Thiago Rocha"
+    },
+    {
+      "title": "Cenario - God of War",
+      "img": "https://adrenaline.com.br/uploads/chamadas/god-of-war-gameplay-state-of-play-08-julho-header.jpg",
+      "desc": "God of War Ragnarök cenario na neve",
+      "tags": [
+        "god of war",
+        "2022"
+      ],
+      "id": "03:47:440us8qKGHqqMUtFVfwMQ11i66oSP2",
+      "uid": "0us8qKGHqqMUtFVfwMQ11i66oSP2",
+      "createdBy": "Thiago Rocha"
+    },
+    {
+      "title": "Kratos",
+      "img": "https://t.ctcdn.com.br/pPijvamTdWiH8NBEO35lOGFywUA=/1024x0/smart/filters:format(webp)/i631113.png",
+      "desc": "Kratos, Atreus e Fenrir o Lobo",
+      "tags": [
+        "god of war",
+        "kratos",
+        "ragnarok"
+      ],
+      "id": "14:30:520us8qKGHqqMUtFVfwMQ11i66oSP2",
+      "uid": "0us8qKGHqqMUtFVfwMQ11i66oSP2",
+      "createdBy": "Thiago Rocha"
     }
   ]
 }

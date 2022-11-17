@@ -4,3 +4,9 @@
     justify-content: center;
     align-items: center;
 }
+.back-to-home {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    cursor: pointer;
+}

@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -11,12 +12,11 @@ import { Login } from "./pages/Login/Login";
 
 //Context
 import { AuthProvider } from "./context/AuthContext";
-import { useState, useEffect } from "react";
 import { useAuthentication } from "./hooks/useAuthentication";
-import { NewPost } from "./components/NewPost";
-
 import { PostsProvider } from "./context/PostsContext";
 import { ModalNewPostProvider } from "./context/ModalNewPostContext";
+
+import { NewPost } from "./components/NewPost";
 
 export function App() {
   const [user, setUser] = useState(undefined);
@@ -48,7 +48,8 @@ export function App() {
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/:id"element={<PostPage />} />
+                <Route path='/search' element={ <Home /> } />
+                <Route path="/:id" element={<PostPage />} />
                 <Route path="/about" element={<About />} />
                 <Route
                   path="/dashboard"
