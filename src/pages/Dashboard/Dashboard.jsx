@@ -13,6 +13,7 @@ import { Error } from "../../components/Error";
 import { PostsContext } from "../../context/PostsContext";
 import { ModalNewPostContext } from "../../context/ModalNewPostContext";
 import { AuthContext } from "../../context/AuthContext";
+import { EditPost } from "../../components/EditPost";
 
 const urlApi = "http://localhost:3000/posts";
 
@@ -20,10 +21,22 @@ export const Dashboard = () => {
   const { data, setData } = useContext(PostsContext);
   const { user } = useContext(AuthContext);
   const { setModalPost } = useContext(ModalNewPostContext);
+
   const [postsUser, setPostsUser] = useState([]);
+  const [modalEditPost, setModalEditPost] = useState(false);
 
   const [loading, setLoading] = useState(null);
   const [error, setError] = useState(null);
+  const [errorEditModal, setErrorEditModal] = useState(null);
+
+  const [idPost, setIdPost] = useState("");
+  const [uidPost, setUidPost] = useState("");
+  const [imgPost, setImgPost] = useState("");
+
+  const [createdByPost, setCreatedByPost] = useState("");
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+  const [tags, setTags] = useState([]);
 
   useEffect(() => {
     setLoading(true);
@@ -70,6 +83,53 @@ export const Dashboard = () => {
     }
   }
 
+  async function handleEditPost(e, id, uid, name) {
+    e.preventDefault();
+
+    if (title !== "" && tags.length !== 0 && desc !== "") {
+      try {
+        setLoading(true);
+        const res = await fetch(`${urlApi}/${id}`, {
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+          method: "PUT",
+          body: JSON.stringify({
+            title: title,
+            id: id,
+            img: imgPost,
+            desc: desc,
+            tags: tags,
+            createdBy: name,
+            uid: uid,
+          }),
+        });
+
+        const data = await res.json();
+
+        setPostsUser([...postsUser]);
+        setData(data);
+
+        setTitle("");
+        setDesc("");
+        setTags([]);
+
+        setErrorEditModal(null);
+        setLoading(false);
+        setModalEditPost(false);
+      } catch (error) {
+        setPostsUser([...postsUser]);
+        setData(data);
+        console.log(error.message);
+        setErrorEditModal("Erro!");
+        setLoading(false);
+      }
+      document.body.classList.remove("active");
+    } else {
+      setErrorEditModal("Preencha todos os campos!");
+    }
+  }
+
   return (
     <section className="dashboard">
       <Navbar />
@@ -97,10 +157,23 @@ export const Dashboard = () => {
                         <div className="infos">
                           <p className="heading-sm">{post.title}</p>
                           <div className="box-btn">
-                            <button className="btn-outline">Editar</button>
+                            <button
+                              className="btn-outline"
+                              onClick={() => {
+                                setIdPost(post.id);
+                                setUidPost(post.uid);
+                                setCreatedByPost(post.createdBy);
+                                setImgPost(post.img);
+                                setModalEditPost(true);
+                              }}
+                            >
+                              Editar
+                            </button>
                             <button
                               className="btn"
-                              onClick={() => deletePost(post.id)}
+                              onClick={() => {
+                                deletePost(post.id);
+                              }}
                             >
                               Excluir
                             </button>
@@ -121,6 +194,23 @@ export const Dashboard = () => {
               </>
             )}
           </>
+        )}
+        {modalEditPost && (
+          <EditPost
+            handleEditPost={(e) =>
+              handleEditPost(e, idPost, uidPost, createdByPost)
+            }
+            titleEdit={setTitle}
+            descEdit={setDesc}
+            tagsEdit={setTags}
+            tags={tags}
+            img={imgPost}
+            modalEditPost={modalEditPost}
+            setModalEditPost={setModalEditPost}
+            loading={loading}
+            error={errorEditModal}
+            setError={setErrorEditModal}
+          />
         )}
       </div>
       <Footer />

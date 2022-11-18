@@ -70,7 +70,6 @@
   opacity: 1;
   animation-name: animateInfos;
   animation-duration: 0.4s;
-  animation-iteration-count: ease-in;
   animation-timing-function: ease;
 }
 .cards .post-card .infos p {
@@ -115,10 +114,21 @@
     transform: translateY(0%);
   }
 }
+@media screen and (max-width: 1350px) {
+  .cards .post-card .infos {
+    opacity: 1;
+  }
+  .cards .post-card .infos:hover {
+    opacity: initial;
+    animation-name: initial;
+    animation-duration: initial;
+    animation-timing-function: initial;
+  }
 
-@media screen and (max-width: 560px) {
-  .dashboard h2 {
-    margin-left: initial;
-    font-size: 2rem;
+  @media screen and (max-width: 560px) {
+    .dashboard h2 {
+      margin-left: initial;
+      font-size: 2rem;
+    }
   }
 }

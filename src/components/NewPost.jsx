@@ -27,11 +27,11 @@ export const NewPost = () => {
   const { user } = useAuthValue();
 
   if (modalPost) {
-    document.body.classList.add("openModal");
+    document.body.classList.add("active");
   }
 
   function closeModal() {
-    document.body.classList.remove("openModal");
+    document.body.classList.remove("active");
     setTitle("");
     setImg("");
     setDesc("");
@@ -131,7 +131,7 @@ export const NewPost = () => {
               <div className="infos">
                 <label>
                   <span className="text-md">Descrição</span>
-                  <div className="">
+                  <div>
                     <textarea
                       required
                       id="description"

@@ -37,6 +37,9 @@ body {
   font-family: "Inter", sans-serif;
   background-color: var(--slate-900);
 }
+body.active {
+  overflow: hidden;
+}
 
 ul,
 a {
@@ -171,7 +174,6 @@ input::placeholder {
 .iconPassword {
   cursor: pointer;
   color: var(--slate-400);
-
 }
 .iconPassword:hover {
   color: var(--slate-200);
@@ -266,9 +268,9 @@ input::placeholder {
   color: var(--slate-100);
 }
 
-
 @media screen and (max-width: 400px) {
-  .form-heading .logo span, .logo a {
+  .form-heading .logo span,
+  .logo a {
     font-size: 2rem;
   }
   .form-heading p {

@@ -1,0 +1,140 @@
+.editPost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background: #1f1f1fc7;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.editPost .container {
+  position: relative;
+  width: min(100rem, 90%);
+  height: min(50rem, 90%);
+  display: flex;
+  animation-duration: 0.3s;
+  animation-name: form-movement;
+  animation-timing-function: ease-in-out;
+  background-color: var(--slate-800);
+  border-radius: .4rem;
+}
+.editPost .container .btn-close {
+  position: absolute;
+  top: 1%;
+  right: 3%;
+  background: none;
+  z-index: 10;
+}
+.editPost .box-img {
+  width: 55%;
+}
+.editPost .box-img img {
+  object-fit: cover;
+  height: 100%;
+  border-bottom-left-radius: .4rem;
+  border-top-left-radius: .4rem;
+}
+.editPost .container form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 65%;
+  padding: 4rem;
+}
+.editPost .infos {
+  display: flex;
+  gap: 3rem;
+  margin-block: 3rem;
+}
+.editPost .infos .tags-input {
+  width: 50%;
+}
+.editPost .box-input input, .editPost .infos .tags-input .box-input input {
+  padding: 1rem;
+}
+.editPost .infos .textArea {
+  width: 50%;
+}
+.editPost .infos .textArea textarea {
+  font-family: "Inter", sans-serif;
+  background-color: var(--slate-700);
+  color: var(--slate-100);
+  border: none;
+  border-radius: 0.4rem;
+  margin-top: 1.2rem;
+  padding: 1rem;
+  max-width: 17.1rem;
+  min-width: 100%;
+  max-height: 8rem;
+  min-height: 8rem;
+}
+.editPost .tags {
+  width: 100%;
+  background-color: var(--slate-700);
+  border-radius: 0.4rem;
+  min-height: 5rem;
+  max-height: 10rem;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+.editPost .tags p {
+  padding: 0.5rem;
+  color: var(--slate-300);
+  font-size: 1.4rem;
+  background-color: var(--slate-900);
+  border-radius: 0.4rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+@keyframes form-movement {
+  0% {
+    transform: translateY(100px);
+    opacity: 0%;
+  }
+  80% {
+    opacity: 100%;
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .editPost .infos {
+    flex-direction: column;
+    gap: 1rem;
+    margin-block: 2rem;
+  }
+  .editPost .infos .tags-input {
+    width: 100%;
+  }
+  .editPost .infos .textArea {
+    width: 100%;
+  }
+  @media screen and (max-width: 400px) {
+    .editPost .container {
+      display: block;
+      overflow: auto;
+    }
+    .editPost .container form {
+      padding: 2rem;
+      width: 100%;
+    }
+    .editPost .box-img {
+      width: 100%;
+      max-height: 15rem;
+      overflow: hidden;
+    }
+  
+  }
+}
