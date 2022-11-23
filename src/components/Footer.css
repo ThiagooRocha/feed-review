@@ -12,12 +12,12 @@
   display: flex;
   justify-content: space-between;
 }
-.footer-contact {
+.contact {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
-.footer-contact li a {
+.contact li a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,7 +26,7 @@
   border-radius: 0.4rem;
   padding: 0.4rem;
 }
-.footer-contact li a:hover {
+.contact li a:hover {
   background-color: #123196;
   color: var(--slate-100);
 }

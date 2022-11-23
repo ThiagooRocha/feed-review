@@ -12,7 +12,7 @@ export const Footer = () => {
           <p>Publique algum assunto que deseja compartilhar!</p>
         </div>
 
-        <ul className="footer-contact">
+        <ul className="contact">
           <li>
             <a
               href="https://www.linkedin.com/in/thiago-rocha-787468223/"

@@ -1,0 +1,64 @@
+.about .wrappler {
+    width: min(90rem, 100%);
+    margin-inline: auto;
+}
+.about .heading {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--slate-100);
+}
+.about .heading p {
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+.about .heading span {
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+
+.about .infos {
+    font-size: 2rem;
+    line-height: 3rem;
+}
+.about .infos p {
+  color: var(--slate-300);
+}
+.about .infos a span {
+  color: var(--blue-800);
+}
+.about .infos a:hover span {
+  color: var(--blue-700);
+}
+.about .infos span {
+  text-decoration: underline;
+  color: var(--slate-100);
+}
+.about .btn-outline {
+  text-align: center;
+  padding: 1.5rem 3rem;
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--slate-300);
+}
+.about .btn-outline:hover, .about .btn-outline:focus {
+    background-color: var(--blue-800);
+    color: var(--slate-100);
+}
+
+.about .box-btn {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 5rem;
+}
+
+.contact {
+    margin-block: 2rem;
+}
+
+@media screen and (max-width: 384px) {
+    .about .box-btn {
+        flex-direction: column;
+    }
+}
