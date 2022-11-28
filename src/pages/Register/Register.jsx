@@ -81,6 +81,7 @@ export const Register = () => {
               placeholder="Nome de usuário"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
+              autoComplete="off"
             />
             <User size="24" className="iconForm" />
           </div>
@@ -94,6 +95,7 @@ export const Register = () => {
               placeholder="Digite seu email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              autoComplete="off"
             />
             <Envelope size="24" className="iconForm" />
           </div>
@@ -107,6 +109,7 @@ export const Register = () => {
               placeholder="Sua senha"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              autoComplete="off"
             />
             <Lock size="24" className="iconForm" />
             {typePassword === "password" ? (

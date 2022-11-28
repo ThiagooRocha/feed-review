@@ -1,32 +1,6 @@
 {
   "posts": [
     {
-      "title": "Mayuri Kurotsuchi",
-      "img": "http://pm1.narvii.com/7342/55fee5de960d6802e886a791036931037755285cr1-1920-1080v2_uhq.jpg",
-      "desc": "Mayuri Kurotsuchi é um personagem fictício do anime e mangá Bleach criado por Tite Kubo. Ele é o atual capitão da 12ª Divisão do Gotei 13 e supervisor do Instituto de Pesquisa e Desenvolvimento dos Soul Reapers.",
-      "tags": [
-        "mayuri",
-        "kurutsuchi"
-      ],
-      "id": "21:30:00beaAJa2wYaNXGVWiNM3Zmp7DdsJ2",
-      "uid": "beaAJa2wYaNXGVWiNM3Zmp7DdsJ2",
-      "createdBy": "manchaa"
-    },
-    {
-      "title": "Hisoka Morrow",
-      "img": "https://wallpapers.com/images/hd/dark-fanart-hisoka-morow-vgf8321o4efwa43f.jpg",
-      "desc": "Hisoka Morow (ヒソカ, Hisoka) é um dos principais antagonistas de Hunter x Hunter, um mágico com grandes habilidades, é considerado por muitos como um louco.",
-      "tags": [
-        "hisoka",
-        "hxh",
-        "hunter x hunter",
-        "anime"
-      ],
-      "id": "16:39:13oyV8KIFp5eNdGaR8Nhl5WXgRcMt1",
-      "uid": "oyV8KIFp5eNdGaR8Nhl5WXgRcMt1",
-      "createdBy": "Hisoka Morrow"
-    },
-    {
       "title": "God of War - Ragnarok",
       "img": "https://images6.alphacoders.com/120/1209131.jpg",
       "desc": "God of War Ragnarök é um jogo eletrônico de ação-aventura desenvolvido pela Santa Monica Studio e publicado pela Sony Interactive Entertainment. Foi lançado em 9 de novembro de 2022 para PlayStation 4 e PlayStation 5. É o nono título da série God of War, o nono em ordem cronológica, e a sequência de God of War.",
@@ -50,13 +24,14 @@
       "createdBy": "Thiago Rocha"
     },
     {
-      "title": "Fenrir - God of War Ragnarok",
-      "img": "https://ovicio.com.br/wp-content/uploads/2022/09/20220913-ovicio-god-of-war-ragnarok-story.jpg",
-      "desc": "Fenrir - O lobo que acompanha Kratos e Atreus em God Of War Ragnarok.",
+      "title": "Monte Fuji",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Mount_Fuji_from_Lake_Shoji_%2815443819010%29.jpg/1200px-Mount_Fuji_from_Lake_Shoji_%2815443819010%29.jpg",
+      "desc": "O monte Fuji é a mais alta montanha da ilha de Honshu e de todo o arquipélago japonês. É um vulcão ativo, porém de baixo risco de erupção. O monte Fuji localiza-se a oeste de Tóquio próximo da costa do oceano Pacífico da ilha de Honshu, na fronteira entre as províncias de Shizuoka e de Yamanashi.",
       "tags": [
-        "god of war"
+        "monte",
+        "monte fuji"
       ],
-      "id": "15:28:270us8qKGHqqMUtFVfwMQ11i66oSP2",
+      "id": "06:36:260us8qKGHqqMUtFVfwMQ11i66oSP2",
       "uid": "0us8qKGHqqMUtFVfwMQ11i66oSP2",
       "createdBy": "Thiago Rocha"
     }

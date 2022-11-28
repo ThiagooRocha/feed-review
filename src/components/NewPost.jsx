@@ -35,6 +35,7 @@ export const NewPost = () => {
     setTitle("");
     setImg("");
     setDesc("");
+    setTextTag("")
     setTags([]);
     setModalPost(false);
   }
@@ -110,6 +111,7 @@ export const NewPost = () => {
                     placeholder="Titulo da sua postagem"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
+                    autoComplete="off"
                   />
                   <TextT size="24" className="iconForm" />
                 </div>
@@ -124,6 +126,7 @@ export const NewPost = () => {
                     placeholder="https://image..."
                     value={img}
                     onChange={(e) => setImg(e.target.value)}
+                    autoComplete="off"
                   />
                   <Image size="24" className="iconForm" />
                 </div>
@@ -151,6 +154,7 @@ export const NewPost = () => {
                       placeholder="Insira as tags"
                       onChange={(e) => setTextTag(e.target.value)}
                       value={textTag}
+                    autoComplete="off"
                     />
 
                     <div

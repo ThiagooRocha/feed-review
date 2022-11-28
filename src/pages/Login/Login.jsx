@@ -75,6 +75,7 @@ export const Login = () => {
               placeholder="Digite seu email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              autoComplete="off"
             />
             <Envelope size="24" className="iconForm" />
           </div>
@@ -89,6 +90,7 @@ export const Login = () => {
               placeholder="Sua senha"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              autoComplete="off"
             />
             <Lock size="24" className="iconForm" />
             {typePassword === "password" ? (

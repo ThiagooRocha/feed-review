@@ -8,20 +8,17 @@ import { ModalNewPostContext } from "../../context/ModalNewPostContext";
 
 import { Link } from "react-router-dom";
 
-import { LinkedinLogo, GithubLogo } from "phosphor-react"
+import { LinkedinLogo, GithubLogo } from "phosphor-react";
 
 export const About = () => {
   const { setModalPost } = useContext(ModalNewPostContext);
-
 
   return (
     <section className="about">
       <Navbar />
       <div className="wrappler">
         <div className="heading">
-          <h2>
-            About 
-          </h2>
+          <h2>About</h2>
           <p>
             <span>Feed</span>Review
           </p>
@@ -44,7 +41,10 @@ export const About = () => {
             Usando <span>json-sever</span> para armazenar os posts dos usuarios.
           </p>
           <p>
-            Projeto criado por <a href="https://github.com/ThiagooRocha" target="blank"><span>Thiago Rocha.</span></a> 
+            Projeto criado por{" "}
+            <a href="https://github.com/ThiagooRocha" target="blank">
+              <span>Thiago Rocha.</span>
+            </a>
           </p>
         </div>
 
@@ -65,8 +65,12 @@ export const About = () => {
         </ul>
 
         <div className="box-btn">
-          <button className="btn-outline" onClick={() => setModalPost(true)}>Criar Postagem</button>
-          <Link className="btn-outline" to="/">Ver Postagens</Link>
+          <button className="btn-outline" onClick={() => setModalPost(true)}>
+            Criar Postagem
+          </button>
+          <Link className="btn-outline" to="/">
+            Ver Postagens
+          </Link>
         </div>
       </div>
       <Footer />
